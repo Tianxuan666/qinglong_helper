@@ -203,7 +203,7 @@ class QlLogScan(Depend):
     def install_depend(self, package, package_type):
         package = package.replace("+", "\+")
         if package_type == "nodejs":
-            install_exec = 'cd /ql/ && ' + self.npm + ' install ' + package
+            install_exec = 'cd /ql/ && ' + self.npm + ' add -g ' + package
         elif package_type == "python":
             install_exec = 'pip3 install ' + package
         elif package_type == "docker":
