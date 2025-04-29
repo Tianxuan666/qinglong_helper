@@ -16,7 +16,7 @@ new Env('青龙日志分析 && 自动补全依赖');
 QL_LOG_SCAN_SCRIPT_PATH=
 
 ## (非必填)指定日志目录: 默认自动识别青龙目录，出现错误才需要手动指定日志目录
-export QL_LOG_PATH="/ql/data/log/"
+export QL_LOG_PATH="/root/ql/data/log/"
 
 ## (非必填)指定不扫描目录：多个请用逗号隔开
 export QL_LOG_BLACK_DIR=""
@@ -203,7 +203,7 @@ class QlLogScan(Depend):
     def install_depend(self, package, package_type):
         package = package.replace("+", "\+")
         if package_type == "nodejs":
-            install_exec = 'cd /ql/ && ' + self.npm + ' add -g ' + package
+            install_exec = 'cd /root/ql/ && ' + self.npm + ' add -g ' + package
         elif package_type == "python":
             install_exec = 'pip3 install ' + package
         elif package_type == "docker":
@@ -220,7 +220,7 @@ class QlLogScan(Depend):
     def check_depend(self, package, package_type):
         package = package.replace("+", "\+")
         if package_type == "nodejs":
-            list_exec = 'cd /ql/ && ' + self.npm + ' list|grep ' + package
+            list_exec = 'cd /root/ql/ && ' + self.npm + ' list|grep ' + package
             list_log = subprocess.run(list_exec, shell=True, capture_output=True, text=True).stdout
             npm_re = re.search(r"[\s]" + package + "@[\d.]+", list_log)
             pnpm_re = re.search(r"^" + package + " [\d.]+", list_log)
