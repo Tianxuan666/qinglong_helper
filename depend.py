@@ -7,10 +7,10 @@ import os
 class Depend:
     @staticmethod
     def get_ql_path():
-        if re.search('/ql/data/', sys.path[0]):
-            return '/ql/data/'
+        if re.search('/root/ql/data/', sys.path[0]):
+            return '/root/ql/data/'
         else:
-            return '/ql/'
+            return '/root/ql/'
 
     @staticmethod
     def get_env(env, default=None):
@@ -65,7 +65,7 @@ class Depend:
         return False
 
     def only_check(self, pyname, pyabspath,osenv=None):
-        only_path = self.get_ql_path() + pyname + '_by_keven1024'
+        only_path = self.get_ql_path() + pyname + 'Tianxuan666'
         result = "☺当前脚本目录为: " + str(pyabspath) + "\n"
         j_data = {
             "py_path": None
