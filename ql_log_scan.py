@@ -16,7 +16,7 @@ new Env('青龙日志分析 && 自动补全依赖');
 QL_LOG_SCAN_SCRIPT_PATH=
 
 ## (非必填)指定日志目录: 默认自动识别青龙目录，出现错误才需要手动指定日志目录
-export QL_LOG_PATH="/root/ql/data/log/"
+export QL_LOG_PATH="/ql/data/log/"
 
 ## (非必填)指定不扫描目录：多个请用逗号隔开
 export QL_LOG_BLACK_DIR=""
@@ -256,6 +256,7 @@ def load_send():
     sys.path.append(cur_path)
     if os.path.exists(cur_path + "/notify.py"):
         try:
+            pass
             from notify import send
         except:
             send = False
